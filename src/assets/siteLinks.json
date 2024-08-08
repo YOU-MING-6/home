@@ -46,7 +46,7 @@
   },
   {
     "icon": "LaptopCode",
-    "name": "Yormong OS NEXT",
+    "name": "YM OS NEXT",
     "link": "https://work.youming.dns.army/作品文档/Yormong%20OS%20NEXT.html"
   },
   {
@@ -63,6 +63,11 @@
     "icon": "LaptopCode",
     "name": "作品文档",
     "link": "https://work.youming.dns.army/作品文档/作品文档.html"
+  },
+  {
+    "icon": "LaptopCode",
+    "name": "Floating OS",
+    "link": "https://work.youming.dns.army/作品文档/Floating%20OS.html"
   },
   {
     "icon": "Fire",
