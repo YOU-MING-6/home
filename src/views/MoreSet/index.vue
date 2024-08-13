@@ -24,7 +24,7 @@
         <el-card class="update">
           <template #header>
             <div class="card-header">
-              <span>更新日志</span>
+              <span>v1.0.1 更新日志</span>
             </div>
           </template>
           <div class="upnote">
@@ -74,14 +74,12 @@ const siteUrl = computed(() => {
 // 更新日志
 const upData = reactive({
   new: [
-    "基于 Github 项目重构主页",
-	"使用 cloudflare 部署主页",
-	"使用 dynv6 自定义主页域名",
-    "开发中...",
+  "基于「Github 开源项目」重构主页",
+	"使用「cloudflare」部署主页",
+  "修改了部分内容",
   ],
   fix: [
-	"修复了「播放器」的一些问题",
-	"修复了网站的一些问题",
+	"修复了一些已知问题",
   ],
 });
 
