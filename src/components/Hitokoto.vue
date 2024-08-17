@@ -58,8 +58,8 @@ const getHitokotoData = async () => {
         fill: "#efefef",
       }),
     });
-    hitokotoData.text = "一言加载失败";
-    hitokotoData.from = "w(ﾟДﾟ)w";
+    hitokotoData.text = "请不要频繁刷新。";
+    hitokotoData.from = "一言加载失败";
   }
 };
 
