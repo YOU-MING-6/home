@@ -92,9 +92,15 @@ export const helloInit = () => {
   } else {
     hello = "夜深了";
   }
+  
+  let message = `<strong>${hello}</strong> 欢迎来到我的主页`;
+  if (hello === "凌晨好") {
+    message = `<strong>${hello}</strong> 怎么还不睡啊，欢迎来到我的主页`;
+  }
+
   ElMessage({
     dangerouslyUseHTMLString: true,
-    message: `<strong>${hello}</strong> 欢迎来到我的主页`,
+    message: message,
   });
 };
 

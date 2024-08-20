@@ -13,7 +13,7 @@
       </el-collapse-item>
       <el-collapse-item title="个性化调整" name="2">
         <div class="item">
-          <span class="text">建站日期显示</span>
+          <span class="text">时光胶囊建站日期显示</span>
           <el-switch
             v-model="siteStartShow"
             inline-prompt
@@ -80,7 +80,7 @@
         </div>
       </el-collapse-item>
       <el-collapse-item title="其他设置" name="4">
-        <div>设置内容待增加</div>
+        <div>这里什么也没有(っ °Д °;)っ</div>
       </el-collapse-item>
     </el-collapse>
   </div>

@@ -24,18 +24,22 @@
         <el-card class="update">
           <template #header>
             <div class="card-header">
-              <span>v1.0.1 更新日志</span>
+              <span>倒计时</span>
             </div>
           </template>
           <div class="upnote">
-            <div v-for="item in upData.new" :key="item" class="uptext">
-              <add-one theme="outline" size="22" />
-              {{ item }}
+            <h3>生日︱7月3日🍀</h3>
+            <div>还有 {{ birthdayDays }} 天 {{ birthdayHours }} 小时 {{ birthdayMinutes }} 分 {{ birthdaySeconds }} 秒</div>
+          </div>
+        </el-card>
+        <el-card class="update">
+          <template #header>
+            <div class="card-header">
+              <span>网站存活时间</span>
             </div>
-            <div v-for="item in upData.fix" :key="item" class="uptext">
-              <bug theme="outline" size="22" />
-              {{ item }}
-            </div>
+          </template>
+          <div class="upnote">
+            <h3>柚明︱主页🍀</h3>已存活 {{ siteUpDays }} 天 {{ siteUpHours }} 小时 {{ siteUpMinutes }} 分 {{ siteUpSeconds }} 秒
           </div>
         </el-card>
       </el-col>
@@ -51,7 +55,7 @@
 </template>
 
 <script setup>
-import { CloseOne, SettingTwo, GithubOne, AddOne, Bug } from "@icon-park/vue-next";
+import { CloseOne, SettingTwo } from "@icon-park/vue-next";
 import { mainStore } from "@/store";
 import Set from "@/components/Set.vue";
 import config from "@/../package.json";
@@ -71,22 +75,46 @@ const siteUrl = computed(() => {
   return url.split(".");
 });
 
-// 更新日志
-const upData = reactive({
-  new: [
-  "基于「Github 开源项目」重构主页",
-	"使用「cloudflare」部署主页",
-  "修改了部分内容",
-  ],
-  fix: [
-	"修复了一些已知问题",
-  ],
-});
+// 生日倒计时
+const birthday = new Date(new Date().getFullYear(), 6, 3); // 生日是7月3日，月份从0开始计数
+const birthdayDays = ref(0);
+const birthdayHours = ref(0);
+const birthdayMinutes = ref(0);
+const birthdaySeconds = ref(0);
 
-// 跳转源代码仓库
-const jumpTo = (url) => {
-  window.open(url);
+// 网站存活时间
+const siteUpTime = new Date(2024, 6, 10); // 网站上线时间是2024年7月10日
+const siteUpDays = ref(0);
+const siteUpHours = ref(0);
+const siteUpMinutes = ref(0);
+const siteUpSeconds = ref(0);
+
+const updateCountdowns = () => {
+  const now = new Date();
+
+  // 更新生日倒计时
+  let diff = birthday - now;
+  if (diff < 0) {
+    birthday.setFullYear(birthday.getFullYear() + 1);
+    diff = birthday - now;
+  }
+  birthdayDays.value = Math.floor(diff / (1000 * 60 * 60 * 24));
+  birthdayHours.value = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  birthdayMinutes.value = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  birthdaySeconds.value = Math.floor((diff % (1000 * 60)) / 1000);
+
+  // 更新网站存活时间
+  diff = now - siteUpTime;
+  siteUpDays.value = Math.floor(diff / (1000 * 60 * 60 * 24));
+  siteUpHours.value = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  siteUpMinutes.value = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  siteUpSeconds.value = Math.floor((diff % (1000 * 60)) / 1000);
 };
+
+onMounted(() => {
+  updateCountdowns();
+  setInterval(updateCountdowns, 1000);
+});
 </script>
 
 <style lang="scss" scoped>
