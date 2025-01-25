@@ -26,10 +26,10 @@ export default {
         { name: '元旦', date: new Date(new Date().getFullYear(), 0, 1) },  // 元旦为1月1日
         { name: '春节', date: new Date(new Date().getFullYear(), 0, 29) },  // 2025春节为1月29日
         // 2月
-        { name: '元宵节', date: new Date(new Date().getFullYear(), 1, 12) },  // 2025春节为2月12日
+        { name: '元宵节', date: new Date(new Date().getFullYear(), 1, 12) },  // 2025元宵节为2月12日
         // 3月
         { name: '植树节', date: new Date(new Date().getFullYear(), 2, 1) },  // 2025植树节为3月1日
-        { name: '消费者权益日', date: new Date(new Date().getFullYear(), 2, 15) },  // 2025消费者权益日为3月15日
+        { name: '消费者权益日', date: new Date(new Date().getFullYear(), 2, 15) },  // 消费者权益日为3月15日
         // 4月
         { name: '清明节', date: new Date(new Date().getFullYear(), 3, 4) },  // 2025清明节为4月4日
         // 5月
