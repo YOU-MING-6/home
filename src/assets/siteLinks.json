@@ -31,27 +31,7 @@
   },
   {
     "icon": "Book",
-    "name": "作品文档-备",
+    "name": "作品文档-备用",
     "link": "https://docs.youming.dpdns.org"
-  },
-  {
-    "icon": "Compass",
-    "name": "反馈中心-备",
-    "link": "https://docs.youming.dpdns.org/notes/反馈中心/"
-  },
-  {
-    "icon": "Compass",
-    "name": "发送反馈-备",
-    "link": "https://docs.youming.dpdns.org/notes/反馈中心/反馈.html"
-  },
-  {
-    "icon": "Compass",
-    "name": "申请权限-备",
-    "link": "https://docs.youming.dpdns.org/notes/反馈中心/申请编辑发布权.html"
-  },
-  {
-    "icon": "Compass",
-    "name": "举报-备",
-    "link": "https://docs.youming.dpdns.org/notes/反馈中心/举报.html"
   }
 ]
