@@ -30,7 +30,7 @@
           <div class="upnote">
             <h3>生日︱7月3日🍀</h3>
             <div>还有 {{ birthdayDays }} 天 {{ birthdayHours }} 小时 {{ birthdayMinutes }} 分 {{ birthdaySeconds }} 秒</div>
-          </div>
+            </div>
         </el-card>
         <el-card class="update">
           <template #header>
@@ -66,7 +66,7 @@ const closeShow = ref(false);
 // 站点链接
 const siteUrl = computed(() => {
   const url = import.meta.env.VITE_SITE_URL;
-  if (!url) return "imsyy.top".split(".");
+  if (!url) return "www.youming.v6.army".split(".");
   // 判断协议前缀
   if (url.startsWith("http://") || url.startsWith("https://")) {
     const urlFormat = url.replace(/^(https?:\/\/)/, "");
@@ -172,23 +172,6 @@ onMounted(() => {
         .sm {
           margin-left: 6px;
           font-size: 2rem;
-        }
-
-        @media (max-width: 990px) {
-          .bg {
-            font-size: 4.5rem;
-          }
-          .sm {
-            font-size: 1.7rem;
-          }
-        }
-        @media (max-width: 825px) {
-          .bg {
-            font-size: 3.8rem;
-          }
-          .sm {
-            font-size: 1.3rem;
-          }
         }
       }
 
