@@ -10,47 +10,24 @@
         @click="store.setOpenState = false"
       />
     </transition>
-    <el-row :gutter="40">
-      <el-col :span="12" class="left">
-        <div class="logo text-hidden">
-          <span class="bg">{{ siteUrl[0] }}</span>
-          <span class="sm">.{{ siteUrl[1] }}</span>
-        </div>
-        <div class="version">
-          <div class="num">v&nbsp;{{ config.version }}</div>
-          <el-tooltip content="基于 Github 项目" placement="right" :show-arrow="false">
-          </el-tooltip>
-        </div>
-        <el-card class="update">
-          <template #header>
-            <div class="card-header">
-              <span>倒计时</span>
-            </div>
-          </template>
-          <div class="upnote">
-            <h3>生日︱7月3日🍀</h3>
-            <div>还有 {{ birthdayDays }} 天 {{ birthdayHours }} 小时 {{ birthdayMinutes }} 分 {{ birthdaySeconds }} 秒</div>
-            </div>
-        </el-card>
-        <el-card class="update">
-          <template #header>
-            <div class="card-header">
-              <span>网站存活时间</span>
-            </div>
-          </template>
-          <div class="upnote">
-            <h3>柚明︱主页🍀</h3>已存活 {{ siteUpDays }} 天 {{ siteUpHours }} 小时 {{ siteUpMinutes }} 分 {{ siteUpSeconds }} 秒
-          </div>
-        </el-card>
-      </el-col>
-      <el-col :span="12" class="right">
-        <div class="title">
-          <setting-two theme="filled" size="28" fill="#ffffff60" />
-          <span class="name">全局设置</span>
-        </div>
-        <Set />
-      </el-col>
-    </el-row>
+    <!-- 顶部 logo 和版本号 -->
+    <div class="top-logo">
+      <div class="logo text-hidden">
+        <span class="bg">{{ siteUrl[0] }}</span>
+        <span class="sm">.{{ siteUrl[1] }}</span>
+      </div>
+      <div class="version">
+        <div class="num">v&nbsp;{{ config.version }}</div>
+      </div>
+    </div>
+    <!-- 主设置区域 -->
+    <div class="main-setting">
+      <div class="title">
+        <setting-two theme="filled" size="28" fill="#ffffff60" />
+        <span class="name">全局设置</span>
+      </div>
+      <Set />
+    </div>
   </div>
 </template>
 
@@ -74,47 +51,6 @@ const siteUrl = computed(() => {
   }
   return url.split(".");
 });
-
-// 生日倒计时
-const birthday = new Date(new Date().getFullYear(), 6, 3); // 生日是7月3日，月份从0开始计数
-const birthdayDays = ref(0);
-const birthdayHours = ref(0);
-const birthdayMinutes = ref(0);
-const birthdaySeconds = ref(0);
-
-// 网站存活时间
-const siteUpTime = new Date(2024, 6, 10); // 网站上线时间是2024年7月10日
-const siteUpDays = ref(0);
-const siteUpHours = ref(0);
-const siteUpMinutes = ref(0);
-const siteUpSeconds = ref(0);
-
-const updateCountdowns = () => {
-  const now = new Date();
-
-  // 更新生日倒计时
-  let diff = birthday - now;
-  if (diff < 0) {
-    birthday.setFullYear(birthday.getFullYear() + 1);
-    diff = birthday - now;
-  }
-  birthdayDays.value = Math.floor(diff / (1000 * 60 * 60 * 24));
-  birthdayHours.value = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  birthdayMinutes.value = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  birthdaySeconds.value = Math.floor((diff % (1000 * 60)) / 1000);
-
-  // 更新网站存活时间
-  diff = now - siteUpTime;
-  siteUpDays.value = Math.floor(diff / (1000 * 60 * 60 * 24));
-  siteUpHours.value = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  siteUpMinutes.value = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  siteUpSeconds.value = Math.floor((diff % (1000 * 60)) / 1000);
-};
-
-onMounted(() => {
-  updateCountdowns();
-  setInterval(updateCountdowns, 1000);
-});
 </script>
 
 <style lang="scss" scoped>
@@ -122,13 +58,16 @@ onMounted(() => {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 80%;
   height: 80%;
   background: rgb(255 255 255 / 40%);
   border-radius: 6px;
   padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 
   .close {
     position: absolute;
@@ -136,119 +75,56 @@ onMounted(() => {
     right: 14px;
     width: 28px;
     height: 28px;
+    &:hover { transform: scale(1.2); }
+    &:active { transform: scale(1); }
+  }
 
-    &:hover {
-      transform: scale(1.2);
+  .top-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo {
+      font-family: "Pacifico-Regular";
+      padding-left: 22px;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .bg { font-size: 5rem; }
+      .sm { margin-left: 6px; font-size: 2rem; }
     }
-
-    &:active {
-      transform: scale(1);
+    .version {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin-top: 24px;
+      .num {
+        font-size: 2rem;
+        font-family: "Pacifico-Regular";
+      }
     }
   }
 
-  .el-row {
-    height: 100%;
-    flex-wrap: nowrap;
+  .main-setting {
+    flex: 1;
+    width: 70%; // 可根据需要调整宽度
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-    .left {
-      height: 100%;
-      padding-left: 40px !important;
-      padding-bottom: 20px;
+    .title {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      .logo {
-        transform: translateY(-8%);
-        font-family: "Pacifico-Regular";
-        padding-left: 22px;
-        width: 100%;
-        height: 260px;
-        min-height: 140px;
-        .bg {
-          font-size: 5rem;
-        }
-
-        .sm {
-          margin-left: 6px;
-          font-size: 2rem;
-        }
-      }
-
-      .version {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        .num {
-          font-size: 2rem;
-          font-family: "Pacifico-Regular";
-        }
-
-        .github {
-          width: 24px;
-          height: 24px;
-          margin-left: 12px;
-          margin-top: 6px;
-
-          &:hover {
-            transform: scale(1.2);
-          }
-        }
-      }
-
-      .update {
-        margin-top: 30px;
-        height: 100%;
-
-        :deep(.el-card__body) {
-          height: 100%;
-
-          .upnote {
-            padding: 20px;
-            height: calc(100% - 56px);
-            overflow-y: auto;
-
-            .uptext {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              padding-bottom: 16px;
-
-              &:nth-last-of-type(1) {
-                padding: 0;
-              }
-
-              .i-icon {
-                width: 22px;
-                height: 22px;
-                margin-right: 8px;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    .right {
-      height: 100%;
-      padding-right: 40px !important;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      .title {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        font-size: 18px;
-        margin-bottom: 16px;
-
-        .i-icon {
-          width: 28px;
-          height: 28px;
-          margin-right: 6px;
-        }
+      align-items: center;
+      flex-direction: row;
+      font-size: 18px;
+      margin-bottom: 16px;
+      .i-icon {
+        width: 28px;
+        height: 28px;
+        margin-right: 6px;
       }
     }
   }
