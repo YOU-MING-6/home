@@ -6,32 +6,32 @@
   },
   {
     "icon": "Book",
-    "name": "作品文档",
+    "name": "作品文档 ①",
     "link": "https://docs.youming.v6.army"
   },
   {
-    "icon": "Compass",
-    "name": "反馈中心",
-    "link": "https://docs.youming.v6.army/notes/反馈中心/"
-  },
-  {
-    "icon": "Compass",
-    "name": "发送反馈",
-    "link": "https://docs.youming.v6.army/notes/反馈中心/反馈.html"
-  },
-  {
-    "icon": "Compass",
-    "name": "申请权限",
-    "link": "https://docs.youming.v6.army/notes/反馈中心/申请编辑发布权.html"
-  },
-  {
-    "icon": "Compass",
-    "name": "举报违规行为",
-    "link": "https://docs.youming.v6.army/notes/反馈中心/举报.html"
+    "icon": "Book",
+    "name": "作品文档 ②",
+    "link": "https://docs.youming.us.ci"
   },
   {
     "icon": "Book",
-    "name": "作品文档-备用",
+    "name": "作品文档 ③",
     "link": "https://docs.youming.dpdns.org"
+  },
+  {
+    "icon": "Compass",
+    "name": "网站监测 ①",
+    "link": "https://web.youming.v6.army"
+  },
+  {
+    "icon": "Book",
+    "name": "网站监测 ②",
+    "link": "https://web.youming.us.ci"
+  },
+  {
+    "icon": "Book",
+    "name": "网站监测 ③",
+    "link": "https://web.youming.dpdns.org"
   }
 ]
